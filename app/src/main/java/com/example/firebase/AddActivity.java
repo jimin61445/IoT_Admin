@@ -65,6 +65,12 @@ public class AddActivity extends AppCompatActivity {
 
     // wifi scan 결과를 얻어서 UI의 TextView에 표시하는 기능 수행
     private void getWifiInfo() {
+        int one = 0;
+        int two=0;
+        int three=0;
+        int oneTemp=-100;
+        int twoTemp=-100;
+        int threeTemp=-100;
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -82,14 +88,39 @@ public class AddActivity extends AppCompatActivity {
         scanResultText.append(mEditTextLocation.getText().toString() + "번 위치에서 " + "===========\n");
         for (int i = 0; i < scanResultList.size(); i++) {
             ScanResult result = scanResultList.get(i);
-            wifiList.add(new WifiInfo(result.SSID, result.BSSID, String.valueOf(result.level)));
-        }
+            scanResultText.append(scanResultList.get(i).SSID+scanResultList.get(i).BSSID+ String.valueOf(scanResultList.get(i).level)+"\n");
+            if(result.level>threeTemp){
+                if(result.level>twoTemp){
+                    if(result.level>oneTemp){
+                        if(oneTemp!=-100) {
+                            three=two;
+                            two=one;
+                            threeTemp=twoTemp;
+                            twoTemp=oneTemp;
+                        }
+                        one = i;
+                        oneTemp=result.level;
 
-
-        for (int k = 0; k < 10; k++) {
-            WifiInfo now = wifiList.get(k);
-            scanResultText.append((k + 1)+ "\t\t" + "SSID :" + now.getSsid() + " " + "\t\t BSSID nn:  " + now.Bssid + "\t RSSI: " + now.getRssi() + " dBm\n");
+                    }
+                    else{
+                        if(twoTemp!=-100) {
+                            three = two;
+                            threeTemp = twoTemp;
+                        }
+                        two = i;
+                        twoTemp=result.level;
+                    }
+                }
+                else{
+                    three=i;
+                    threeTemp=result.level;
+                }
+            }
         }
+        wifiList.add(new WifiInfo(scanResultList.get(one).SSID, scanResultList.get(one).BSSID, String.valueOf(scanResultList.get(one).level)));
+        wifiList.add(new WifiInfo(scanResultList.get(two).SSID, scanResultList.get(two).BSSID, String.valueOf(scanResultList.get(two).level)));
+        wifiList.add(new WifiInfo(scanResultList.get(three).SSID,scanResultList.get(three).BSSID, String.valueOf(scanResultList.get(three).level)));
+
         firestore = FirebaseFirestore.getInstance();
         firestore.collection("classrooms")
                 .document(mEditTextLocation.getText().toString()).update("RSSI", wifiList);
