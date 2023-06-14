@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,14 +16,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class WifiInfoActivity extends AppCompatActivity {
     RecyclerView view;
     WifiAdapter wifiAdapter;
     RecyclerView.LayoutManager linearLayoutManager;
     ArrayList<WifiInfo> wifis = new ArrayList<WifiInfo>();
-    WifiInfo wifiInfo;
+
     private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +49,7 @@ public class WifiInfoActivity extends AppCompatActivity {
                     DocumentSnapshot documentSnapshot = task.getResult();
                     String ssid, bssid, rssi;
                     ArrayList<Object> get = (ArrayList<Object>) documentSnapshot.getData().get("RSSI");
-                    //Log.e("tga", documentSnapshot.getData().get("RSSI").toString());
+
                     if(get == null){
                         Toast.makeText(WifiInfoActivity.this, "정보 스캔하세요",Toast.LENGTH_SHORT).show();
                         return;

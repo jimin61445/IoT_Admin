@@ -9,40 +9,39 @@
         android:id="@+id/room"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="room"
-        android:textSize="30sp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        tools:text="room"
+        android:textSize="30sp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/ssid"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            tools:text="text"
-            android:textSize="10sp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="20dp"/>
-
+            android:layout_weight="4"
+            tools:text="SSID"
+            android:textSize="12dp"/>
         <TextView
             android:id="@+id/bssid"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            tools:text="text"
-            android:textSize="10sp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="20dp"/>
-
+            android:layout_weight="4"
+            tools:text="BSSID"
+            android:textSize="12dp"/>
         <TextView
             android:id="@+id/rssi"
-            android:textSize="10sp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            tools:text="text"/>
+            android:layout_weight="1"
+            android:gravity="center"
+            tools:text="RSSID"
+            android:textSize="12dp"/>
     </LinearLayout>
-
 
 </LinearLayout>

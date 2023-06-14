@@ -4,22 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <!--    <TextView-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="호수 입력창"/>-->
-
-    <!--    <TextView-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="wifi search 결과"/>-->
-
-    <!--    <TextView-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="WiFi Scan" />-->
-
     <EditText
         android:id="@+id/activit_main_location_edittext"
         android:layout_width="match_parent"
@@ -39,6 +23,5 @@
         android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
 
 </LinearLayout>

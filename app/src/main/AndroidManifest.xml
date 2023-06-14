@@ -23,9 +23,6 @@
             android:name=".UserActivity"
             android:exported="false" />
         <activity
-            android:name=".custom"
-            android:exported="false" />
-        <activity
             android:name=".AddActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
